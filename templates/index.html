@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PolicyNav - Smart Policy Search</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f4f7fb;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #333;
+    }
+
+    h1 {
+        margin-top: 40px;
+        color: #1e3a8a;
+        text-align: center;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+
+    form {
+        margin: 25px 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    input[type="text"] {
+        width: 400px;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        transition: 0.3s;
+    }
+
+    input[type="text"]:focus {
+        border-color: #2563eb;
+        outline: none;
+        box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+    }
+
+    button {
+        padding: 12px 25px;
+        font-size: 16px;
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background-color: #1e40af;
+    }
+
+    .results-container {
+        width: 90%;
+        max-width: 1100px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+        margin-bottom: 50px;
+    }
+
+    .result-card {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        padding: 20px;
+        transition: transform 0.2s, box-shadow 0.2s;
+        position: relative;
+    }
+
+    .result-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    .scheme-title {
+        font-size: 18px;
+        color: #1e3a8a;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    .meta {
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 10px;
+    }
+
+    .badge {
+        background: #e0e7ff;
+        color: #1e40af;
+        font-weight: 600;
+        border-radius: 6px;
+        padding: 4px 8px;
+        font-size: 12px;
+        margin-right: 6px;
+    }
+
+    .score {
+        font-weight: 600;
+        color: #059669;
+    }
+
+    .section {
+        margin-top: 12px;
+        background: #f9fafb;
+        padding: 10px 12px;
+        border-radius: 8px;
+        border-left: 4px solid #2563eb;
+    }
+
+    .section h4 {
+        margin: 0;
+        font-size: 15px;
+        color: #1e3a8a;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .section p {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #444;
+        line-height: 1.5;
+        display: none;
+    }
+
+    .section.open p {
+        display: block;
+    }
+
+    @media (max-width: 600px) {
+        input[type="text"] {
+            width: 90%;
+        }
+        .results-container {
+            width: 95%;
+        }
+    }
+</style>
+<script>
+function toggleSection(el) {
+    el.parentElement.classList.toggle('open');
+}
+</script>
+</head>
+
+<body>
+<h1>🔎 PolicyNav - Public Policy Explorer</h1>
+<form method="post" action="/search">
+    <input type="text" name="query" placeholder="Search any government scheme or policy..." required>
+    <button type="submit">Search</button>
+</form>
+
+{% if results %}
+<div class="results-container">
+    {% for r in results %}
+    <div class="result-card">
+        <div class="scheme-title">{{ r.scheme_name }}</div>
+        <div class="meta">
+            <span class="badge">{{ r.schemeCategory }}</span>
+            <span class="badge">{{ r.level }}</span>
+            | Relevance: <span class="score">{{ r.score }}</span>
+        </div>
+        <div class="summary">{{ r.summary }}</div>
+
+        {% if r.eligibility %}
+        <div class="section">
+            <h4 onclick="toggleSection(this)">Eligibility ▼</h4>
+            <p>{{ r.eligibility }}</p>
+        </div>
+        {% endif %}
+
+        {% if r.benefits %}
+        <div class="section">
+            <h4 onclick="toggleSection(this)">Benefits ▼</h4>
+            <p>{{ r.benefits }}</p>
+        </div>
+        {% endif %}
+
+        {% if r.application %}
+        <div class="section">
+            <h4 onclick="toggleSection(this)">Application Process ▼</h4>
+            <p>{{ r.application }}</p>
+        </div>
+        {% endif %}
+
+        {% if r.documents %}
+        <div class="section">
+            <h4 onclick="toggleSection(this)">Required Documents ▼</h4>
+            <p>{{ r.documents }}</p>
+        </div>
+        {% endif %}
+
+        {% if r.tags %}
+        <div class="section">
+            <h4 onclick="toggleSection(this)">Tags ▼</h4>
+            <p>{{ r.tags }}</p>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+</body>
+</html>
