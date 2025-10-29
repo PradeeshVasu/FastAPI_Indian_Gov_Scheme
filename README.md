@@ -1,11 +1,5 @@
 # FastAPI_Indian_Gov_Scheme
-Perfect 🔥 Here’s your **final, professional, GitHub-ready README.md** — fully enhanced with badges, a clean layout, and visuals similar to your Quantum project’s style.
 
-You can directly copy this into your repository as `README.md` — it’s fully formatted for GitHub.
-
----
-
-```markdown
 <!-- PROJECT TITLE -->
 <h1 align="center">🇮🇳 Indian Government Schemes NLP</h1>
 <p align="center">
