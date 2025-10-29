@@ -161,8 +161,8 @@ textwrap3
 ## 👨‍💻 Author
 
 **Pradeesh Vasu**
-🎓 B.Tech in Computer Science Engineering
-💼 Experienced in Machine Learning, NLP & FastAPI Projects
+🎓 B.Tech in Computer Science Engineering          
+💼 Experienced in Machine Learning, NLP & FastAPI Projects            
 💬 Passionate about AI-driven social impact solutions
 
 ---
