@@ -144,9 +144,12 @@ Visit 👉 [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 <img width="1826" height="1031" alt="Screenshot 2025-10-31 194527" src="https://github.com/user-attachments/assets/20ed5288-f94e-485d-9ebc-6d5194f16403" />
 
+
 <img width="1850" height="994" alt="Screenshot 2025-10-31 194633" src="https://github.com/user-attachments/assets/92a40480-874c-418e-8406-daa0cd933965" />
 
+
 <img width="1837" height="1025" alt="Screenshot 2025-10-31 194651" src="https://github.com/user-attachments/assets/3b950b85-565d-407f-809b-f53328885a53" />
+
 
 ## 🧰 Requirements
 
