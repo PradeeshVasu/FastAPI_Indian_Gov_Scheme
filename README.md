@@ -134,6 +134,10 @@ Visit 👉 [http://127.0.0.1:8000](http://127.0.0.1:8000)
 * **Application:** Apply through the official portal
 
 ---
+## NLP Indian_Gov_Scheme_AgentAI Model
+
+<img width="1751" height="976" alt="Screenshot 2025-10-17 150227" src="https://github.com/user-attachments/assets/9e6913f5-2eef-4e62-996a-e0e693644753" />
+
 
 ## 🧰 Requirements
 
